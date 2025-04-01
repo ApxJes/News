@@ -1,8 +1,7 @@
 package com.example.news.newsFeatures.domain.model
 
-
-data class NewsResponse(
-    val articles: List<Article>,
+data class News(
+    val articles: List<Article?>,
     val status: String?,
     val totalResults: Int?
 )

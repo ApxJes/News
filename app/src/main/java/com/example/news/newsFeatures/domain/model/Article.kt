@@ -1,11 +1,11 @@
 package com.example.news.newsFeatures.domain.model
 
-data class Article(
+import com.example.news.newsFeatures.data.remote.dto.SourceDto
+
+data class Article (
     val author: String?,
-    val content: String?,
     val description: String?,
     val publishedAt: String?,
-    val source: Source?,
     val title: String?,
     val url: String?,
     val urlToImage: String?

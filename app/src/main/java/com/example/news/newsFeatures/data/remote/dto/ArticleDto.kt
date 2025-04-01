@@ -1,6 +1,6 @@
 package com.example.news.newsFeatures.data.remote.dto
 
-
+import com.example.news.newsFeatures.data.local.ArticleEntity
 import com.example.news.newsFeatures.domain.model.Article
 import com.google.gson.annotations.SerializedName
 
@@ -22,16 +22,14 @@ data class ArticleDto(
     @SerializedName("urlToImage")
     val urlToImage: String?
 ) {
-    fun toArticle(): Article {
-        return Article(
+    fun toArticleEntity(): ArticleEntity {
+        return ArticleEntity(
             author = author,
-            content = content,
             description = description,
             publishedAt = publishedAt,
-            source = source?.toSource(),
             title = title,
             url = url,
-            urlToImage = urlToImage
+            urlToImage = urlToImage,
         )
     }
 }

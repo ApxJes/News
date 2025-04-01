@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,8 +18,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
-    @Provides
     @Singleton
+    @Provides
     fun providesRetrofitInstance(): Retrofit {
         val logging = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -29,14 +30,20 @@ object RetrofitModule {
             .connectTimeout(15, TimeUnit.MILLISECONDS)
             .build()
 
-        return Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+        return retrofit
     }
 
     @Provides
     @Singleton
-    fun providesApi(retrofit: Retrofit): NewsApi = retrofit.create(NewsApi::class.java)
+    fun providesApi(retrofit: Retrofit): NewsApi {
+        return retrofit.create(NewsApi::class.java)
+    }
+
+
 }
