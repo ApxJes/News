@@ -1,6 +1,6 @@
 package com.example.news.newsFeatures.domain.model
 
-import com.example.news.newsFeatures.data.remote.dto.SourceDto
+import java.io.Serializable
 
 data class Article (
     val author: String?,
@@ -11,4 +11,4 @@ data class Article (
     val urlToImage: String?,
 
     val id: Int?
-)
+): Serializable

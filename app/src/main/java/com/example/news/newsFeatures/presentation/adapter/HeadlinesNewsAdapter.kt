@@ -61,10 +61,20 @@ class HeadlinesNewsAdapter: RecyclerView.Adapter<HeadlinesNewsAdapter.ItemsViewH
             newsDescription.text = headLineNews.description
             author.text = headLineNews.author
             newsReleaseDate.text = headLineNews.publishedAt
+
+            itemView.setOnClickListener {
+                onClick?.invoke(headLineNews)
+            }
         }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    private var onClick: ((Article) -> Unit)? = null
+
+    fun setOnClickListener(listener: (Article) -> Unit) {
+        onClick = listener
     }
 }

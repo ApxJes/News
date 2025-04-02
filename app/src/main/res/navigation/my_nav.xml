@@ -9,5 +9,18 @@
         android:id="@+id/headlinesNewsFragment"
         android:name="com.example.news.newsFeatures.presentation.ui.fragment.HeadlinesNewsFragment"
         android:label="fragment_headlines_news"
-        tools:layout="@layout/fragment_headlines_news" />
+        tools:layout="@layout/fragment_headlines_news" >
+        <action
+            android:id="@+id/action_headlinesNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.news.newsFeatures.presentation.ui.fragment.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" >
+        <argument
+            android:name="articles"
+            app:argType="com.example.news.newsFeatures.domain.model.Article" />
+    </fragment>
 </navigation>

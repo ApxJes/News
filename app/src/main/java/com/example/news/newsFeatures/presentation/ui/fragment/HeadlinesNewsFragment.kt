@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.news.R
 import com.example.news.core.Resource
@@ -45,6 +46,11 @@ class HeadlinesNewsFragment : Fragment() {
 
         fetchDataFromNewsViewModel()
         setUpRecyclerViewForHeadlinesNews()
+
+        newsAdapter.setOnClickListener {
+            val action = HeadlinesNewsFragmentDirections.actionHeadlinesNewsFragmentToArticleFragment(it)
+            findNavController().navigate(action)
+        }
     }
 
     private fun fetchDataFromNewsViewModel() {
