@@ -23,7 +23,8 @@ data class ArticleEntity(
             publishedAt = publishedAt,
             title = title,
             url = url,
-            urlToImage = urlToImage
+            urlToImage = urlToImage,
+            id = id
         )
     }
 }
